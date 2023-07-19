@@ -21,6 +21,9 @@ class probFn(nn.Module):
     def PROB(self, x, y):
         return self.p(self.cosE(x,y))
 
+    def forward(self, x, y):
+        return self.PROB(x,y)
+
     def streamPROB(self, x, y):
         return torch.cat([self.p(self.cosE(i.view(1, -1), y)).view(1, -1) for i in x], dim=0)
 
